@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  name  String?
+}
+
+model Workout {
+  id          Int      @id @default(autoincrement())
+  slug        String
+  title       String
+  difficulty  String
+  description String?
+  image       String
+  targetArea  String[]
+  equipment   String
+  progression String
+  tips        String[]
+  steps       String[]
+  reps        Json
+  commonMistakes String[]
+  createdAt   DateTime @default(now())
+}
